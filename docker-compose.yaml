@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - ../airflow_data:/var/lib/postgresql/data
+
+  airflow:
+    build: .
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ../source_data:/opt/airflow/dags/data
+    command: "airflow standalone"
+
+
+  digitrails-data:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: digitrails
+      POSTGRES_PASSWORD: digitrails
+      POSTGRES_DB: digitrails
+    ports:
+      - "5433:5432"
+    volumes:
+      - ../digitrails_data:/var/lib/postgresql/data
