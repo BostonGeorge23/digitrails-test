@@ -30,8 +30,8 @@ This project is designed to process and analyze geographical and meteorological 
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/yourusername/your-repo.git
-    cd your-repo
+    git clone https://github.com/aleSE93/digitrails-test.git
+    cd digitrails-test
     ```
 
 2. **Build the Docker image**:
