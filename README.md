@@ -34,18 +34,13 @@ This project is designed to process and analyze geographical and meteorological 
     cd digitrails-test
     ```
 
-2. **Build the Docker image**:
-    ```sh
-    docker build -t digitrails .
-    ```
-
-3. **Start the Docker containers**:
+2. **Start the Docker containers**:
     ```sh
     docker-compose up -d
     ```
 
-4. **Access the Airflow web interface**:
-   Open your browser and go to `http://localhost:8080`. Use the default credentials to log in.
+3. **Access the Airflow web interface**:
+   Open your browser and go to `http://localhost:8080`. Use the default credentials printed on airflow system log to log in.
 
 ## Running the Environment
 
